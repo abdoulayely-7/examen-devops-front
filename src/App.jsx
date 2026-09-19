@@ -3,7 +3,10 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './index.css';
 
-const apiUrl = import.meta.env.VITE_API_URL || 'https://app-lydevtech.duckdns.org/api/users';
+
+const envUrl = import.meta.env.VITE_API_URL || 'https://app-lydevtech.duckdns.org/api/users';
+const apiUrl = envUrl.endsWith('/users') ? envUrl : `${envUrl}/users`;
+
 
 function App() {
   const [users, setUsers] = useState([]);
